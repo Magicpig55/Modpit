@@ -38,10 +38,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modifiers\Clamper.cs" />
+    <Compile Include="Modifiers\Modifier.cs" />
+    <Compile Include="Node\Attributes\NodeDataType.cs" />
+    <Compile Include="Node\Attributes\NodeInputAttribute.cs" />
+    <Compile Include="Node\Attributes\NodeModifierAttribute.cs" />
+    <Compile Include="Node\Attributes\NodeOutputAttribute.cs" />
+    <Compile Include="Node\Attributes\NodeParameterAttribute.cs" />
+    <Compile Include="Node\Attributes\NodeParameterRendererAttribute.cs" />
+    <Compile Include="Modifiers\AutoAdjust.cs" />
     <Compile Include="Modpit.cs" />
-    <Compile Include="Modifiers\Generic.cs" />
+    <Compile Include="Node\Node.cs" />
+    <Compile Include="Node\NodeInput.cs" />
+    <Compile Include="Node\NodeOutput.cs" />
+    <Compile Include="Node\NodeParameter.cs" />
+    <Compile Include="Node\NodeTree.cs" />
+    <Compile Include="Node\NodeView.cs" />
     <Compile Include="Util\FastBitmap.cs" />
+    <Compile Include="Util\Position.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
