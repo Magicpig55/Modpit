@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Modpit</RootNamespace>
     <AssemblyName>Modpit</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,9 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modifiers\Modifier.cs" />
+    <Compile Include="Modifiers\IModifier.cs" />
     <Compile Include="Node\Attributes\NodeDataType.cs" />
     <Compile Include="Node\Attributes\NodeInputAttribute.cs" />
     <Compile Include="Node\Attributes\NodeModifierAttribute.cs" />
@@ -53,10 +55,16 @@
     <Compile Include="Node\NodeParameter.cs" />
     <Compile Include="Node\NodeTree.cs" />
     <Compile Include="Node\NodeView.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Themes\Theme.cs" />
     <Compile Include="Util\FastBitmap.cs" />
     <Compile Include="Util\Position.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="SharpDX, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>packages\SharpDX.3.0.2\lib\net45\SharpDX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />

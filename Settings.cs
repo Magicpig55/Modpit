@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modpit.Node {
-    class NodeParameter {
-        public Node Parent;
+namespace Modpit {
+    public static class Settings {
+
     }
 }

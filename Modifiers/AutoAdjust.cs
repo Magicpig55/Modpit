@@ -10,15 +10,22 @@ using Modpit.Util;
 using Modpit.Node.Attributes;
 
 namespace Modpit.Modifiers {
-    [NodeModifier()]
-    class AutoAdjust : Modifier {
+    [NodeModifier]
+    class AutoAdjust : IModifier {
         [NodeInput(NodeDataType.Image)]
         public Bitmap InputBitmap;
 
         [NodeOutput(NodeDataType.Image)]
-        public Bitmap PerformModifier() {
-            FastBitmap b = new FastBitmap(InputBitmap);
-            return InputBitmap;
+        public Bitmap OutputBitmap;
+
+        public string Name {
+            get {
+                return "AutoAdjust";
+            }
+        }
+
+        public void Perform() {
+            OutputBitmap = (Bitmap)InputBitmap.Clone();
         }
     }
 }

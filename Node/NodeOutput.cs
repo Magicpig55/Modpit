@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace Modpit.Node {
     class NodeOutput {
+        public Node Parent;
     }
 }

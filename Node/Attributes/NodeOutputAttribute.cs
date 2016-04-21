@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Modpit.Node.Attributes {
-    [AttributeUsage(AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Field)]
     public class NodeOutputAttribute : Attribute {
         public readonly NodeDataType OutputType;
 

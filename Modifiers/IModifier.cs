@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modpit.Node {
-    class NodeParameter {
-        public Node Parent;
+namespace Modpit.Modifiers {
+    public interface IModifier {
+        string Name { get; }
+        void Perform();
     }
 }

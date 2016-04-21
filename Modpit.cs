@@ -10,6 +10,8 @@ using Modpit.Modifiers;
 using Modpit.Node.Attributes;
 using Modpit.Node;
 
+using SharpDX.Direct3D;
+
 namespace Modpit {
     // Modpit contains all necessary data for the workflow, as well as
     // form controls.
@@ -19,6 +21,7 @@ namespace Modpit {
 
         public static Modpit Instance;
 
+        [STAThread]
         public static void Main(string[] args) {
             Instance = new Modpit();
         }
@@ -27,17 +30,21 @@ namespace Modpit {
             // Scan for and add all Modifiers to a list
             foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies()) {
                 foreach (Type type in asm.GetTypes()) {
-                    if (type.GetCustomAttributes(typeof(NodeModifierAttribute), true).Length > 0 && type.IsSubclassOf(typeof(Modifier))) {
+                    if (type.GetCustomAttributes(typeof(NodeModifierAttribute), true).Length > 0 && type.IsSubclassOf(typeof(IModifier))) {
                         modifiers.Add(type);
                     }
                 }
             }
         }
-        public static Node.Node CreateNode(Type ModType) {
+        public static Node.Node CreateNode(Type ModType, Util.Position Pos) {
+            if (!ModType.IsSubclassOf(typeof(IModifier))) throw new Exception();
             Node.Node n = new Node.Node();
-            n.Modifier = (Modifier)Activator.CreateInstance(ModType);
-            n.Position = new Util.Position(0, 0);
+            n.Modifier = (IModifier)Activator.CreateInstance(ModType);
+            n.Position = Pos;
             return n;
+        }
+        public static Node.Node CreateNode(Type ModType) {
+            return CreateNode(ModType, new Util.Position(0, 0));
         }
     }
 }
