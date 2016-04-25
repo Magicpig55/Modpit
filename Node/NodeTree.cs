@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Modpit.Node {
-    class NodeTree {
+    public class NodeTree {
         public List<Node> NodeList = new List<Node>();
     }
 }

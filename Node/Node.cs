@@ -8,7 +8,7 @@ using Modpit.Util;
 using Modpit.Modifiers;
 
 namespace Modpit.Node {
-    class Node {
+    public class Node {
         public Position Position;
         public IModifier Modifier;
 

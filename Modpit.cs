@@ -15,7 +15,7 @@ using SharpDX.Direct3D;
 namespace Modpit {
     // Modpit contains all necessary data for the workflow, as well as
     // form controls.
-    class Modpit {
+    class Modpit : Window {
 
         private static List<Type> modifiers = new List<Type>();
 
@@ -24,7 +24,11 @@ namespace Modpit {
         [STAThread]
         public static void Main(string[] args) {
             Instance = new Modpit();
+            Instance.Run();
         }
+
+        private NodeRenderer nr = new NodeRenderer();
+        private Node.Node testNode = CreateNode(typeof(AutoAdjust));
 
         public Modpit() {
             // Scan for and add all Modifiers to a list
@@ -37,7 +41,7 @@ namespace Modpit {
             }
         }
         public static Node.Node CreateNode(Type ModType, Util.Position Pos) {
-            if (!ModType.IsSubclassOf(typeof(IModifier))) throw new Exception();
+            //if (!ModType.IsSubclassOf(typeof(IModifier))) throw new Exception();
             Node.Node n = new Node.Node();
             n.Modifier = (IModifier)Activator.CreateInstance(ModType);
             n.Position = Pos;
@@ -45,6 +49,10 @@ namespace Modpit {
         }
         public static Node.Node CreateNode(Type ModType) {
             return CreateNode(ModType, new Util.Position(0, 0));
+        }
+        protected override void Draw(TimeHandler time) {
+            base.Draw(time);
+            nr.DrawNode(RenderTarget2D, testNode);
         }
     }
 }

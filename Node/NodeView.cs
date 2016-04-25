@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Modpit.Node {
-    class NodeView {
+    public class NodeView {
         public int ViewportWidth {
             get;
             set;

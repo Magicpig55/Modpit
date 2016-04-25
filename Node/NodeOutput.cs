@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Modpit.Node {
-    class NodeOutput {
+    public class NodeOutput {
         public Node Parent;
     }
 }
