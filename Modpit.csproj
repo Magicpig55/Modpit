@@ -58,8 +58,10 @@
     <Compile Include="Node\NodeTree.cs" />
     <Compile Include="Node\NodeView.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="SimpleWindow.cs" />
     <Compile Include="Themes\Theme.cs" />
     <Compile Include="TimeHandler.cs" />
+    <Compile Include="Util\ColorUtils.cs" />
     <Compile Include="Util\FastBitmap.cs" />
     <Compile Include="Util\Position.cs" />
     <Compile Include="Window.cs" />

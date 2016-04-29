@@ -9,13 +9,15 @@ using System.Reflection;
 using Modpit.Modifiers;
 using Modpit.Node.Attributes;
 using Modpit.Node;
+using Modpit.Util;
+using System.Drawing;
 
-using SharpDX.Direct3D;
+//using SharpDX.Direct2D1;
 
 namespace Modpit {
     // Modpit contains all necessary data for the workflow, as well as
     // form controls.
-    class Modpit : Window {
+    class Modpit : SimpleWindow {
 
         private static List<Type> modifiers = new List<Type>();
 
@@ -30,15 +32,18 @@ namespace Modpit {
         private NodeRenderer nr = new NodeRenderer();
         private Node.Node testNode = CreateNode(typeof(AutoAdjust));
 
+        private float MX = 0f;
+        private float MY = 0f;
+
         public Modpit() {
             // Scan for and add all Modifiers to a list
-            foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies()) {
-                foreach (Type type in asm.GetTypes()) {
-                    if (type.GetCustomAttributes(typeof(NodeModifierAttribute), true).Length > 0 && type.IsSubclassOf(typeof(IModifier))) {
-                        modifiers.Add(type);
-                    }
-                }
-            }
+            //foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies()) {
+            //    foreach (Type type in asm.GetTypes()) {
+            //        if (type.GetCustomAttributes(typeof(NodeModifierAttribute), true).Length > 0 && type.IsSubclassOf(typeof(IModifier))) {
+            //            modifiers.Add(type);
+            //        }
+            //    }
+            //}
         }
         public static Node.Node CreateNode(Type ModType, Util.Position Pos) {
             //if (!ModType.IsSubclassOf(typeof(IModifier))) throw new Exception();
@@ -52,7 +57,14 @@ namespace Modpit {
         }
         protected override void Draw(TimeHandler time) {
             base.Draw(time);
-            nr.DrawNode(RenderTarget2D, testNode);
+            RenderTarget2D.Clear(ColorUtils.MakeColor(Color.DarkGray));
+            RenderTarget2D.FillRectangle(new SharpDX.Mathematics.Interop.RawRectangleF(MX - 5f, MY - 5f, MX + 5f, MY + 5f), SceneColorBrush);
+        }
+
+        protected override void MouseMove(MouseEventArgs e) {
+            base.MouseMove(e);
+            MX = e.X;
+            MY = e.Y;
         }
     }
 }
