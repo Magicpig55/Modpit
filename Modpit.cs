@@ -35,6 +35,8 @@ namespace Modpit {
         private float MX = 0f;
         private float MY = 0f;
 
+        private NodeTree nodeTree = new NodeTree();
+
         public Modpit() {
             // Scan for and add all Modifiers to a list
             //foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies()) {
@@ -44,6 +46,10 @@ namespace Modpit {
             //        }
             //    }
             //}
+        }
+        protected override void Initialize() {
+            base.Initialize();
+
         }
         public static Node.Node CreateNode(Type ModType, Util.Position Pos) {
             //if (!ModType.IsSubclassOf(typeof(IModifier))) throw new Exception();
